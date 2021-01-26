@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="preconnect" href="https://fonts.gstatic.com">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="css/main.css">
+    <title>Fancy Button</title>
+</head>
+
+<body>
+
+    <div class="container">
+
+        <button>
+            <span class="label">Confirm</span>
+            <span class="icon">
+                <svg width="40" height="33" viewBox="0 0 40 33" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <path d="M10.5 19L18.5 30.5L39 1.5" stroke="white" stroke-width="2" />
+                </svg>
+            </span>
+        </button>
+
+        <p>Next</p>
+
+    </div>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.6.0/gsap.min.js"
+        integrity="sha512-1dalHDkG9EtcOmCnoCjiwQ/HEB5SDNqw8d4G2MKoNwjiwMNeBAkudsBCmSlMnXdsH8Bm0mOd3tl/6nL5y0bMaQ=="
+        crossorigin="anonymous">
+        </script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.6.0/CSSRulePlugin.min.js"
+        integrity="sha512-9F1xsW3TBG87UnyGcF1SrXph249h/eUKPRKJZVhXxW+OeDmCiBvU9/gLfOo5qEvGTjTxOr6YQrY4ImjL90IUyw=="
+        crossorigin="anonymous">
+        </script>
+
+    <script>
+
+        gsap.registerPlugin(CSSRulePlugin);
+
+        const tl = gsap.timeline({ defaults: { ease: Power2.easeOut } })
+
+        btn = document.querySelector('button');
+        rule = CSSRulePlugin.getRule('button::before');
+
+        tl.to('.label', { opacity: 0, height: 0, position: 'absolute', duration: '.2s' })
+            .to('button', { borderRadius: '50%', width: '2.5em', height: '2.5em', ease: Elastic.easeOut.config(.7, 0.3), duration: 1.2 }, '-=.5s')
+            .to(rule, { borderRadius: '50%' }, '-=1s')
+            .to('path', { "stroke-dashoffset": 0, duration: 2 }, '-=1')
+            .to('path', { attr: { d: 'M17 32L32.5 17.5L17 1' } })
+            .to('p', { clipPath: 'circle(100% at 50% 50%)', duration: 1.2})
+
+        tl.pause();
+
+        btn.addEventListener('click', () => {
+            tl.play();
+        })
+
+    </script>
+</body>
+
+</html>
