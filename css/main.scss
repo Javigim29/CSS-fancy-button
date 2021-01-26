@@ -46,9 +46,6 @@ svg {
     position: absolute;
     top: .7em;
     left: .4em;
-
-    path {
-        stroke-dasharray: 206;
-        stroke-dashoffset: 206;
-    }
+    stroke-dasharray: 206;
+    stroke-dashoffset: 206;
 }
