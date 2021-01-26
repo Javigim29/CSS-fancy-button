@@ -48,7 +48,7 @@
         tl.to('.label', { opacity: 0, height: 0, position: 'absolute', duration: '.2s' })
             .to('button', { borderRadius: '50%', width: '2.5em', height: '2.5em', ease: Elastic.easeOut.config(.7, 0.3), duration: 1.2 }, '-=.5s')
             .to(rule, { borderRadius: '50%' }, '-=1s')
-            .to('path', { "stroke-dashoffset": 0, duration: 2 }, '-=1')
+            .to('svg', { strokeDashoffset: 0, duration: 2 }, '-=1')
             .to('path', { attr: { d: 'M17 32L32.5 17.5L17 1' } })
             .to('p', { clipPath: 'circle(100% at 50% 50%)', duration: 1.2})
 
